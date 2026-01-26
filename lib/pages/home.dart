@@ -336,6 +336,7 @@ class _HomePageState extends State<HomePage> {
     } catch (e) {
       // Ignore if method not implemented or error
     }
+  }
 
   void setIsReversing(int targetIndex) {
     bool reversing =
