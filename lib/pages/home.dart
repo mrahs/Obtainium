@@ -326,7 +326,16 @@ class _HomePageState extends State<HomePage> {
         await handleShowAppInfo(packageName);
       }
     });
-  }
+
+    // Check for pending package name from initial intent
+    try {
+      String? pendingPackage = await platform.invokeMethod('getPendingPackageName');
+      if (pendingPackage != null) {
+        await handleShowAppInfo(pendingPackage);
+      }
+    } catch (e) {
+      // Ignore if method not implemented or error
+    }
 
   void setIsReversing(int targetIndex) {
     bool reversing =
